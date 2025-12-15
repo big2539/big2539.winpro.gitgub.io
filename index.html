@@ -1,116 +1,216 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>Winnerslot88 Share</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Winnerslot88 Share</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(180deg, #061a33, #020b1a);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
-    button {
-      width: 90%;
-      max-width: 320px;
-      padding: 18px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 14px;
-      border: none;
-      background: #06C755;
-      color: #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,.3);
-      cursor: pointer;
-    }
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000;
+    overflow: hidden;
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
-  </style>
+/* 🌈 Background */
+.bg {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(0,255,180,.25), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(30,136,229,.25), transparent 40%),
+      linear-gradient(160deg, #020b1a, #061a33, #020b1a);
+    animation: bgPulse 6s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
+    100% { filter: hue-rotate(0deg); }
+}
+
+/* 🧊 Container */
+.container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+/* 💎 Card */
+.card {
+    width: 100%;
+    max-width: 360px;
+    background: rgba(0,0,0,.75);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 0 0 40px rgba(0,255,180,.35);
+    text-align: center;
+    animation: fadeUp .6s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🖼 Image pop sync */
+.hero {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(0,255,180,.6);
+    opacity: 0;
+    transform: scale(.96);
+    transition: opacity .6s ease;
+}
+
+.hero.loaded {
+    opacity: 1;
+    animation: syncPop 6s ease-in-out infinite;
+}
+
+@keyframes syncPop {
+    0%,45%,100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+}
+
+/* ✨ Text */
+h2 {
+    margin: 16px 0 6px;
+    color: #00ffc6;
+    font-size: 22px;
+    text-shadow: 0 0 10px rgba(0,255,200,.8);
+}
+
+p {
+    font-size: 14px;
+    color: #cfd8dc;
+    margin-bottom: 18px;
+}
+
+/* 🚀 Button */
+button {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg,#00ffc6,#1e88e5);
+    color: #000;
+    box-shadow: 0 0 30px rgba(0,255,200,.6);
+    animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #aaa;
+}
+</style>
 </head>
 
 <body>
 
-  <button onclick="shareFlex()">📤 แชร์โปรโมชั่น</button>
+<div class="bg"></div>
 
-  <script>
-    const FLEX_MESSAGE = {
-      type: "bubble",
-      size: "giga",
-      hero: {
-        type: "image",
-        url: "https://i.ibb.co/nqDHRPVY/IMG-20251215-194747-952.jpg",
-        size: "full",
-        aspectRatio: "1:1",
-        aspectMode: "cover"
-      },
-      footer: {
-        type: "box",
-        layout: "vertical",
-        spacing: "md",
-        backgroundColor: "#071b33",
-        contents: [
-          {
-            type: "button",
-            style: "primary",
-            color: "#06C755",
-            height: "md",
-            action: {
-              type: "uri",
-              label: "💬 ติดต่อ LINE",
-              uri: "https://lin.ee/RTy4qpH"
-            }
-          },
-          {
-            type: "button",
-            style: "secondary",
-            color: "#1e88e5",
-            height: "md",
-            action: {
-              type: "uri",
-              label: "🌐 เข้าเว็บไซต์",
-              uri: "http://winnerslot88.com"
-            }
-          }
-        ]
-      }
-    };
+<div class="container">
+  <div class="card">
+    <img
+      src="https://i.ibb.co/nqDHRPVY/IMG-20251215-194747-952.jpg"
+      class="hero"
+      onload="this.classList.add('loaded')"
+    >
+    <h2>🎁 โปรโมชั่น Winnerslot88</h2>
+    <p>แชร์ให้เพื่อนหรือกลุ่ม LINE<br>รับสิทธิ์พิเศษทันที</p>
+    <button onclick="shareFlex()">📤 แชร์โปรโมชั่น</button>
+    <div class="note">กิจกรรมแชร์ผ่าน LINE</div>
+  </div>
+</div>
 
-    async function initLiff() {
-      try {
-        await liff.init({
-          liffId: "2008689015-of9NO5hT"
-        });
-      } catch (err) {
-        alert("LIFF init error");
-      }
-    }
-
-    async function shareFlex() {
-      if (!liff.isApiAvailable("shareTargetPicker")) {
-        alert("อุปกรณ์นี้ไม่รองรับการแชร์");
-        return;
-      }
-
-      await liff.shareTargetPicker([
-        {
-          type: "flex",
-          altText: "แจกเครดิตฟรี Winnerslot88",
-          contents: FLEX_MESSAGE
+<script>
+const FLEX_MESSAGE = {
+  type: "bubble",
+  size: "giga",
+  hero: {
+    type: "image",
+    url: "https://i.ibb.co/nqDHRPVY/IMG-20251215-194747-952.jpg",
+    size: "full",
+    aspectRatio: "1:1",
+    aspectMode: "cover"
+  },
+  footer: {
+    type: "box",
+    layout: "vertical",
+    spacing: "md",
+    backgroundColor: "#071b33",
+    contents: [
+      {
+        type: "button",
+        style: "primary",
+        color: "#06C755",
+        height: "md",
+        action: {
+          type: "uri",
+          label: "💬 ติดต่อ LINE",
+          uri: "https://lin.ee/RTy4qpH"
         }
-      ]);
-    }
+      },
+      {
+        type: "button",
+        style: "secondary",
+        color: "#1e88e5",
+        height: "md",
+        action: {
+          type: "uri",
+          label: "🌐 เข้าเว็บไซต์",
+          uri: "http://winnerslot88.com"
+        }
+      }
+    ]
+  }
+};
 
-    initLiff();
-  </script>
+async function initLiff() {
+  await liff.init({ liffId: "2008689015-of9NO5hT" });
+
+  if (!liff.isInClient()) {
+    alert("กรุณาเปิดผ่านแอป LINE");
+  }
+}
+
+async function shareFlex() {
+  if (!liff.isApiAvailable("shareTargetPicker")) {
+    alert("อุปกรณ์นี้ไม่รองรับการแชร์");
+    return;
+  }
+
+  await liff.shareTargetPicker([
+    {
+      type: "flex",
+      altText: "แจกเครดิตฟรี Winnerslot88",
+      contents: FLEX_MESSAGE
+    }
+  ]);
+}
+
+initLiff();
+</script>
 
 </body>
 </html>
