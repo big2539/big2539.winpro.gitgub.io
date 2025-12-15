@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Winnerslot88 Share</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #061a33, #020b1a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    button {
+      width: 90%;
+      max-width: 320px;
+      padding: 18px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 14px;
+      border: none;
+      background: #06C755;
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,.3);
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+
+<body>
+
+  <button onclick="shareFlex()">📤 แชร์โปรโมชั่น</button>
+
+  <script>
+    const FLEX_MESSAGE = {
+      type: "bubble",
+      size: "giga",
+      hero: {
+        type: "image",
+        url: "https://i.ibb.co/nqDHRPVY/IMG-20251215-194747-952.jpg",
+        size: "full",
+        aspectRatio: "9:16",
+        aspectMode: "cover"
+      },
+      footer: {
+        type: "box",
+        layout: "vertical",
+        spacing: "md",
+        backgroundColor: "#071b33",
+        contents: [
+          {
+            type: "button",
+            style: "primary",
+            color: "#06C755",
+            height: "md",
+            action: {
+              type: "uri",
+              label: "💬 ติดต่อ LINE",
+              uri: "https://lin.ee/RTy4qpH"
+            }
+          },
+          {
+            type: "button",
+            style: "secondary",
+            color: "#1e88e5",
+            height: "md",
+            action: {
+              type: "uri",
+              label: "🌐 เข้าเว็บไซต์",
+              uri: "http://winnerslot88.com"
+            }
+          }
+        ]
+      }
+    };
+
+    async function initLiff() {
+      try {
+        await liff.init({
+          liffId: "2008689015-of9NO5hT"
+        });
+      } catch (err) {
+        alert("LIFF init error");
+      }
+    }
+
+    async function shareFlex() {
+      if (!liff.isApiAvailable("shareTargetPicker")) {
+        alert("อุปกรณ์นี้ไม่รองรับการแชร์");
+        return;
+      }
+
+      await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: "แจกเครดิตฟรี Winnerslot88",
+          contents: FLEX_MESSAGE
+        }
+      ]);
+    }
+
+    initLiff();
+  </script>
+
+</body>
+</html>
